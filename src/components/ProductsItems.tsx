@@ -31,7 +31,7 @@ function ProductsItems({ product, index, addToCart }: ProductsItemsProps) {
 				<button
 					onClick={() => addToCart(product)}
 					type='button'
-					className='bg-lime-200 hover:bg-lime-600  text-gray-700 p-2 rounded-lg border-2 border-lime-500'
+					className='px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700'
 				>
 					Agregar
 				</button>

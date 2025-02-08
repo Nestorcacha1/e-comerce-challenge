@@ -25,8 +25,9 @@ export interface ProductsItemsProps {
 }
 
 export interface ProductSearchProps {
-	setSearchData: React.Dispatch<React.SetStateAction<Product[]>>
-	products: Product[]
+	// setSearchData: React.Dispatch<React.SetStateAction<Product[]>>
+	// products: Product[]
+	addToCart: (product: Product) => void
 }
 
 export interface CartProps {

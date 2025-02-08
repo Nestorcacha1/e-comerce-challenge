@@ -8,7 +8,7 @@ import { Product } from './type/PorductTypes'
 
 function App() {
 	const products = useProducts()
-	const [searchData, setSearchData] = useState<Product[]>([])
+	// const [searchData, setSearchData] = useState<Product[]>([])
 
 	const [addCar, setAddCar] = useState<Product[]>([])
 
@@ -22,11 +22,8 @@ function App() {
 				Mi farmacia
 			</h2>
 			<ProductShop cart={addCar} />
-			<ProductSearch setSearchData={setSearchData} products={products} />
-			<ProductList
-				products={searchData.length > 0 ? searchData : products}
-				addToCart={addToCart}
-			/>
+			<ProductSearch addToCart={addToCart} />
+			<ProductList products={products} addToCart={addToCart} />
 		</div>
 	)
 }
