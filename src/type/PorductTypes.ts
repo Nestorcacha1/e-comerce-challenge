@@ -39,3 +39,9 @@ export interface CartItemProps {
 	product: Product
 	index: number
 }
+
+export interface ProductSearchItemProps {
+	product: Product
+	index: number
+	addToCart: (product: Product) => void
+}

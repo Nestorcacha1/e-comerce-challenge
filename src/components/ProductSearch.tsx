@@ -3,6 +3,7 @@ import { searchProducts } from '../hook/useProducts'
 import { Product, ProductSearchProps } from '../type/PorductTypes'
 
 import { IoClose } from 'react-icons/io5'
+import ProductSearchItem from './ProductSearchItem'
 
 function ProductSearch({ addToCart }: ProductSearchProps) {
 	const [search, setSearch] = useState<string>('')
@@ -54,32 +55,11 @@ function ProductSearch({ addToCart }: ProductSearchProps) {
 					{searchData.length > 0 ? (
 						<ul>
 							{searchData.map((product, index) => (
-								<li
-									key={index}
-									className='flex items-center gap-4 border-b py-2'
-								>
-									<img
-										className='w-12 h-12 object-cover'
-										src={product.image}
-										alt={product.name}
-									/>
-									<div className='flex-1'>
-										<p className='font-medium'>{product.name}</p>
-										{product.offer_price ? (
-											<p className='text-red-500 font-semibold'>
-												S/ {product.offer_price}
-											</p>
-										) : (
-											<p className='text-gray-600'>S/ {product.price}</p>
-										)}
-									</div>
-									<button
-										className='px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700'
-										onClick={() => addToCart(product)}
-									>
-										Agregar
-									</button>
-								</li>
+								<ProductSearchItem
+									product={product}
+									index={index}
+									addToCart={addToCart}
+								/>
 							))}
 						</ul>
 					) : (
