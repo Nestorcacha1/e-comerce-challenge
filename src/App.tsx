@@ -1,35 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ProductList from './components/ProductList'
+import ProductSearch from './components/ProductSearch'
+import ProductShop from './components/ProductShop'
+import { useProducts } from './hook/useProducts'
+import { Product } from './type/PorductTypes'
 
 function App() {
-  const [count, setCount] = useState(0)
+	const products = useProducts()
+	const [searchData, setSearchData] = useState<Product[]>([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	const [addCar, setAddCar] = useState<Product[]>([])
+
+	const addToCart = (product: Product) => {
+		setAddCar([...addCar, product])
+	}
+
+	return (
+		<div className='flex bg-amber-200 flex-col'>
+			<h2 className='text-4xl text-center mt-4 uppercase text-gray-800 font-bold'>
+				Mi farmacia
+			</h2>
+			<ProductShop cart={addCar} />
+			<ProductSearch setSearchData={setSearchData} products={products} />
+			<ProductList
+				products={searchData.length > 0 ? searchData : products}
+				addToCart={addToCart}
+			/>
+		</div>
+	)
 }
 
 export default App
