@@ -1,6 +1,6 @@
-import { FaCartArrowDown } from 'react-icons/fa6'
-import { CartProps } from '../type/PorductTypes'
 import { useState } from 'react'
+import { FaCartPlus } from 'react-icons/fa6'
+import { CartProps } from '../type/PorductTypes'
 import ProductShopItem from './ProductShopItem'
 
 function ProductShop({ cart }: CartProps) {
@@ -24,11 +24,13 @@ function ProductShop({ cart }: CartProps) {
 
 	return (
 		<div className='relative flex justify-end p-4 mx-16 gap-4'>
-			<FaCartArrowDown
+			<FaCartPlus
 				className='w-10 h-10 text-white cursor-pointer'
 				onClick={ToggleVisible}
 			/>
-			<span className='font-semibold text-lg'>{cart.length}</span>
+			<span className='font-semibold  text-center text-lg bg-sky-300 w-8 h-8 rounded-full'>
+				{cart.length}
+			</span>
 
 			{isVisible && (
 				<div className='absolute top-12 right-0 bg-white shadow-lg rounded-md w-80 z-50'>

@@ -4,19 +4,14 @@ import { ProductSearchProps } from '../type/PorductTypes'
 
 function ProductSearch({ setSearchData, products }: ProductSearchProps) {
 	const [search, setSearch] = useState<string>('')
-	const [error, setError] = useState<string>('')
 
 	const handleSearchByNameAndCode = async (
 		e: React.FormEvent<HTMLFormElement>
 	) => {
 		e.preventDefault()
 		if (search.trim() === '') {
-			setError('El campo de búsqueda no puede estar vacío.')
 			setSearchData(products)
-		} else if (search.trim().length < 3) {
-			setError('Busque por nombre o codigo, al menos 3 caracteres')
 		} else {
-			setError('')
 			const results = await searchProducts(search)
 			setSearchData(results)
 		}
@@ -31,7 +26,6 @@ function ProductSearch({ setSearchData, products }: ProductSearchProps) {
 				<input
 					onChange={e => setSearch(e.target.value)}
 					value={search}
-					required
 					className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none'
 					type='search'
 					placeholder='Buscar por nombre o código'
@@ -42,7 +36,6 @@ function ProductSearch({ setSearchData, products }: ProductSearchProps) {
 				>
 					Buscar
 				</button>
-				{error && <p className='text-red-400 mt-2 p-1 text-sm'>{error}</p>}
 			</form>
 		</div>
 	)
