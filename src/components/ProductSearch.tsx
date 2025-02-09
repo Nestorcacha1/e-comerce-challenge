@@ -47,7 +47,7 @@ function ProductSearch({ addToCart }: ProductSearchProps) {
 						<h2 className='text-lg font-semibold'>Resultados de búsqueda</h2>
 						<button
 							onClick={() => setIsOpen(false)}
-							className='text-gray-600 hover:text-black'
+							className='text-gray-600 hover:text-black cursor-pointer'
 						>
 							<IoClose size={24} />
 						</button>
